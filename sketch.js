@@ -43,16 +43,18 @@ let sketch = function (p) {
             b = p.map(p.mouseY, 0, p.height, 50, 100);
         // let c = p.color(100, 100, 100);
         let c = p.color(h, s, b);
-        let rgb = hsbToRgb(h, s + 25, p.map(b, 50, 100, 100, 50));
+        let rgb = hsbToRgb(h, s, b);
+        let adjustedRgb = hsbToRgb(h, s + 25, p.map(b, 50, 100, 100, 50));
         // let rp = Math.max(rgb.r, rgb.g, rgb.b) + Math.min(rgb.r, rgb.g, rgb.b) - rgb.r,
         //     gp = Math.max(rgb.r, rgb.g, rgb.b) + Math.min(rgb.r, rgb.g, rgb.b) - rgb.g,
         //     bp = Math.max(rgb.r, rgb.g, rgb.b) + Math.min(rgb.r, rgb.g, rgb.b) - rgb.b
 
-        let rp = rgb.r,
-            bp = rgb.b,
-            gp = rgb.g
+        let rp = adjustedRgb.r,
+            bp = adjustedRgb.b,
+            gp = adjustedRgb.g
 
-        $('.floatingbutton').css('background-color', 'rgba(' + rp + ',' + gp + ',' + bp + ')');
+        $('.floatingbutton').css('background-color', 'rgb(' + rp + ',' + gp + ',' + bp + ')');
+        $('.projbpoint').css('color', 'rgb(' + rgb.r + ',' + rgb.g + ',' + rgb.b+ ')')
 
         lastC = c;
         return c

@@ -9,10 +9,10 @@ $(document).ready(() => {
         instance.addEmoji();
     });
 
-
+    $(window).scroll(() => scrollBot())
 })
 
-window.onscroll = function () { scrollBot() };
+$(".projectlist").children().prepend("<span class='projbpoint'>&#9679;</span>")
 
 var header = document.getElementById("projectstop");
 var sticky = header.offsetTop;
@@ -20,9 +20,7 @@ var sticky = header.offsetTop;
 function scrollBot() {
     if (window.pageYOffset > sticky) {
         header.classList.add("sticky");
-        // header.classList.remove("bgwhite");
     } else {
         header.classList.remove("sticky");
-        // header.classList.remove("bgwhite");
     }
 }

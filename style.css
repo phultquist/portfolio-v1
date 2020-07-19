@@ -77,7 +77,7 @@ body, html {
 }
 
 #projects {
-    padding-top: 15px;
+    padding-top: 0px;
 }
 
 #projects {
@@ -99,14 +99,47 @@ body, html {
     top: 0;
     width: 100%;
     background-color: rgb(245, 245, 245) !important;
-    box-shadow:0 2px 4px 0 rgba(0,0,0,0.16),0 2px 10px 0 rgba(0,0,0,0.12);
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
     /* border-bottom: 1px solid black; */
 }
 
-.bgwhite{
+.bgwhite {
     background-color: white;
 }
 
 .sticky+#projects {
-    padding-top: 116px;
+    padding-top: 101px;
+}
+
+#projects {
+    font-family: sans-serif;
+}
+
+ul {
+    list-style: none;
+    /* Remove default bullets */
+}
+
+/* ul li::before {
+    content: "\25CF";
+    color: red;
+    font-weight: 900;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+} */
+
+.projbpoint {
+    width: 1em;
+    margin-left: -1em;
+    display: inline-block;
+}
+
+.proj{
+    margin-top: 15px;
+}
+
+.proj ul {
+    width: 50%;
+    margin: 0 auto;
 }
