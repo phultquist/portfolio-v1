@@ -1,7 +1,7 @@
 $(document).ready(() => {
     $("#learnmore").click(() => {
         $([document.documentElement, document.body]).animate({
-            scrollTop: $("#projectstop").offset().top
+            scrollTop: $("#projectstop").offset().top + 1 // i really wanted the shadow to take affect, hence the +1
         }, 500);
     });
 
@@ -9,7 +9,8 @@ $(document).ready(() => {
         instance.addEmoji();
     });
 
-    $(window).scroll(() => scrollBot())
+    scrollBot();
+    $(window).scroll(() => scrollBot());
 })
 
 $(".projectlist").children().prepend("<span class='projbpoint'>&#9679;</span>")
