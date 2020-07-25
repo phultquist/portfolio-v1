@@ -1,3 +1,5 @@
+let startingOffset;
+
 $(document).ready(() => {
     $("#learnmore").click(() => {
         $([document.documentElement, document.body]).animate({
@@ -11,6 +13,9 @@ $(document).ready(() => {
 
     scrollBot();
     $(window).scroll(() => scrollBot());
+    startingOffset = $(".card:eq(0)").offset().left
+
+    $('#right').click( () => scroll())
 })
 
 $(".projectlist").children().prepend("<span class='projbpoint'>&#9679;</span>")
@@ -24,4 +29,15 @@ function scrollBot() {
     } else {
         header.classList.remove("sticky");
     }
+}
+
+let currentCard = 0;
+
+function scroll(right) {
+    let offset = $(".card:eq("+ ++currentCard +")").offset().left
+    console.log(offset);
+    $(".scrolling-wrapper").animate({
+        scrollLeft: (offset) - startingOffset
+        // scrollLeft: 500
+    }, 500);
 }
