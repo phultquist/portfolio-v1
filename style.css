@@ -138,7 +138,7 @@ ul {
     cursor: pointer;
 }
 
-.projtable{
+.projtable {
     width: 100%;
     padding: 0px;
     border-collapse: collapse;
@@ -148,10 +148,10 @@ ul {
     width: 50%;
 }
 
-.proj:hover, .card:hover {
-    transform: scale(1.005);
+.proj:hover, .card:hover, .horizontal-scroll-button:hover {
+    transform: scale(1.005) !important;
     z-index: -2;
-    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12) !important;
 }
 
 .proj h1, .proj h5 {
@@ -204,7 +204,7 @@ ul {
     transition: all .2s ease-in-out;
 }
 
-.card:first-child {
+.card.firstcard {
     margin-left: 10%;
 }
 
@@ -226,4 +226,29 @@ ul {
 
 .subtlelink:hover {
     text-decoration: underline;
+}
+
+.horizontal-scroll-button#right {
+    width: 60px;
+    height: 60px;
+    background-color: white;
+    position: absolute;
+    margin-top: 50px;
+    right: 40px;
+    z-index: 1000;
+    border-radius: 999px;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    transition: all .2s ease-in-out;
+    cursor: pointer;
+    text-align: center;
+}
+
+.right-arrow {
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 3px;
+    transform: rotate(-45deg) translate(-50%, -50%);
+    -webkit-transform: rotate(-45deg) translate(-50%, -50%);
+    margin-top: 50%;
 }
