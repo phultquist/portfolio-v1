@@ -18,8 +18,6 @@ $(document).ready(() => {
     $('#right').click( () => scroll())
 })
 
-$(".projectlist").children().prepend("<span class='projbpoint'>&#9679;</span>")
-
 var header = document.getElementById("projectstop");
 var sticky = header.offsetTop;
 
@@ -32,12 +30,24 @@ function scrollBot() {
 }
 
 let currentCard = 0;
+let init = true
 
 function scroll(right) {
-    let offset = $(".card:eq("+ ++currentCard +")").offset().left
+
+    currentCard++;
+    if (!init) {
+        // currentCard++;
+    }
+    init = !init;
+    setBg()
+
+    let offset = $(".card:eq("+ currentCard +")").offset().left
     console.log(offset);
     $(".scrolling-wrapper").animate({
-        scrollLeft: (offset) - startingOffset
-        // scrollLeft: 500
+        scrollLeft: currentCard * 335
     }, 500);
+}
+
+function setBg() {
+    $(".card:eq("+ currentCard +")").css('background-color', 'red')
 }
