@@ -39,15 +39,10 @@ function scroll(right) {
         // currentCard++;
     }
     init = !init;
-    setBg()
 
     let offset = $(".card:eq("+ currentCard +")").offset().left
     console.log(offset);
     $(".scrolling-wrapper").animate({
         scrollLeft: currentCard * 335
     }, 500);
-}
-
-function setBg() {
-    $(".card:eq("+ currentCard +")").css('background-color', 'red')
 }
