@@ -1,4 +1,7 @@
-let startingOffset;
+let currentCard = 0;
+
+let startingOffset,
+    numCards;
 
 $(document).ready(() => {
     $("#learnmore").click(() => {
@@ -15,7 +18,10 @@ $(document).ready(() => {
     $(window).scroll(() => scrollBot());
     startingOffset = $(".card:eq(0)").offset().left
 
-    $('#right').click( () => scroll())
+    $('#right').click( () => scroll(true))
+    $('#left').click( () => scroll(false))
+
+    numCards = $(".scrolling-wrapper").children().length - 2;
 })
 
 var header = document.getElementById("projectstop");
@@ -29,20 +35,15 @@ function scrollBot() {
     }
 }
 
-let currentCard = 0;
-let init = true
-
 function scroll(right) {
-
-    currentCard++;
-    if (!init) {
-        // currentCard++;
+    let left = !right;
+    let maxscroll = $(".scrolling-wrapper")[0].scrollWidth - $(".scrolling-wrapper").width(),
+        scrollLeft = $(".scrolling-wrapper").scrollLeft();
+    if ((scrollLeft >= maxscroll && right) || (scrollLeft <= 0 && left) ) {
+        return;
     }
-    init = !init;
 
-    let offset = $(".card:eq("+ currentCard +")").offset().left
-    console.log(offset);
     $(".scrolling-wrapper").animate({
-        scrollLeft: currentCard * 335
+        scrollLeft: (right ? ++currentCard : --currentCard) * 335
     }, 500);
 }
