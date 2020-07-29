@@ -243,11 +243,11 @@ ul {
     text-align: center;
 }
 
-.horizontal-scroll-button#right{
+.horizontal-scroll-button#right {
     right: 20px;
 }
 
-.horizontal-scroll-button#left{
+.horizontal-scroll-button#left {
     left: 20px;
 }
 
@@ -259,4 +259,31 @@ ul {
     transform: rotate(-45deg) translate(-50%, -50%);
     -webkit-transform: rotate(-45deg) translate(-50%, -50%);
     margin-top: 50%;
+}
+
+.homeimage {
+    display: inline-block;
+    height: 50px;
+    vertical-align: middle;
+}
+
+.navtitle {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 10px;
+}
+
+.subtlelink {
+    text-decoration: none;
+    color: black;
+    font-size: 0.83em;
+    font-weight: bold;
+}
+
+.subtlelink:hover {
+    text-decoration: underline;
+}
+
+#workdescription {
+    margin-top: 20px;
 }

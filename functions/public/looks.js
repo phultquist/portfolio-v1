@@ -43,7 +43,16 @@ function scroll(right) {
         return;
     }
 
+    let scrollLength = 355;
+
     $(".scrolling-wrapper").animate({
-        scrollLeft: (right ? ++currentCard : --currentCard) * 335
+        scrollLeft: (right ? ++currentCard : --currentCard) * scrollLength
     }, 500);
+
+    if (scrollLength * currentCard >= maxscroll) {
+        $(`#${right? 'right' : 'left'}`).fadeOut(400);
+    } else {
+        $(`#left`).show();
+        $(`#right`).show();
+    }
 }
