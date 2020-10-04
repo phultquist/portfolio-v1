@@ -30,6 +30,36 @@ function getIp(req) {
     return i
 }
 
+app.get('/frame/connect/raw', (req, res) => {
+    let globalIp =  getIp(req);
+    if (globalIp.startsWith('undefined')) {
+        res.send("Couldn't find frame on your network. Try again soon.")
+    } else {
+        db.collection('frames').where("globalIp", "==", globalIp).get().then(snapshot => {
+            // console.log(snapshot);
+            let matches = []
+            snapshot.forEach(doc => {
+                matches.push(doc.data())
+            })
+            // res.send('matches')
+            if (matches.length == 0) {
+                res.status(200).send("Couldn't find frame on your network. Try again soon.")
+            } else if (matches.length == 1) {
+                res.send(matches[0].localIp)
+            } else {
+                let text = '';
+                matches.forEach(match => {
+                    text += `<a href="${match.localIp}">${match.frameId} at ${match.localIp}</a> <br>`
+                })
+                res.status(200).send(text)
+            }
+        })
+        .catch(() => {
+            res.status(500).send('error')
+        })
+    }
+})
+
 app.get('/frame/connect', (req, res) => {
     // res.send('hi')
     let globalIp =  getIp(req);
@@ -53,7 +83,7 @@ app.get('/frame/connect', (req, res) => {
                 matches.forEach(match => {
                     text += `${match.localIp} <br>`
                 })
-                res.status(200).end(text)
+                res.status(200).send(text)
             }
         })
         .catch(() => {
