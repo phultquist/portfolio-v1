@@ -24,6 +24,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/home.html'));
 });
 
+app.get('/resume', (req, res) => {
+    res.sendFile(path.join(__dirname, '/files/Resume.pdf'))
+});
+
 function getIp(req) {
     let i = (req.headers['x-forwarded-for'] || req.connection.remoteAddress) || 'error:'+Math.random()+':'+Date.now();
     i = i.split(',')[0]
