@@ -5,6 +5,7 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 firebase-debug.log*
+patrick-today-firebase-adminsdk-zeyvx-630f632f07.json
 
 # Firebase cache
 .firebase/
