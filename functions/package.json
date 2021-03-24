@@ -15,7 +15,8 @@
   "dependencies": {
     "@google/area120-tables": "^1.0.0",
     "firebase-admin": "^8.10.0",
-    "firebase-functions": "^3.6.1"
+    "firebase-functions": "^3.6.1",
+    "nanoid": "^3.1.22"
   },
   "devDependencies": {
     "eslint": "^5.12.0",

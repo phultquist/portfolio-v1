@@ -1,6 +1,7 @@
 const functions = require('firebase-functions');
 const express = require('express');
 const app = express();
+const {nanoid} = require('nanoid');
 
 const path = require('path');
 const fs = require('fs');
@@ -22,6 +23,37 @@ let db = admin.firestore();
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/home.html'));
+});
+
+app.get('/shorten', (req,res) => {
+    let oldUrl = req.query.long;
+    let newId = req.query.short || nanoid(10);
+    let baseUrl = "patrick.today/s/" + newId;
+    let newUrl = "https://patrick.today/s/" + newId;
+    let doc = db.collection("urls").doc(newId)
+    
+    // doc.get().then((data) => {
+        
+    // });
+
+    doc.set({
+        shortId: newId,
+        short: newUrl,
+        long: oldUrl
+    }).then(() => {
+        res.send(newUrl + "<br><br>" + baseUrl);
+    }).catch(() => {
+        res.send("error");
+    });
+});
+
+app.get('/s/:id', async (req, res) => {
+    let doc = await db.collection("urls").doc(req.params.id).get();
+    res.redirect(doc.data().long);
+});
+
+app.get('/gh/:repository', (req, res) => {
+    res.redirect('https://github.com/phultquist/'+req.params.repository);
 });
 
 app.get('/resume', (req, res) => {
