@@ -25,6 +25,10 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '/public/home.html'));
 });
 
+app.get('/shortener', (req, res) => {
+
+});
+
 app.get('/shorten', (req,res) => {
     let oldUrl = req.query.long;
     let newId = req.query.short || nanoid(10);
